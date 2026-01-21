@@ -1,4 +1,4 @@
-<CsoundSynthesizer>
+<CoundSynthesizer>
 
 <CsOptions>
 -odac
@@ -36,7 +36,7 @@ if p6 == 0 then;          major
   prints "major-----------------------" 
 
 elseif p6 == 1 then;      minor
-  iRoot = cpspch(p5)
+ iRoot = cpspch(p5)
   i3rd  = cpspch(p5 + 0.03)
   i5th  = cpspch(p5 + 0.07)
   print iRoot
@@ -269,3 +269,20 @@ i "ostinato"  +   2     .     9.04
 </CsScore>
 
 </CsoundSynthesizer>
+<bsbPanel>
+ <label>Widgets</label>
+ <objectName/>
+ <x>100</x>
+ <y>100</y>
+ <width>320</width>
+ <height>240</height>
+ <visible>true</visible>
+ <uuid/>
+ <bgcolor mode="background">
+  <r>240</r>
+  <g>240</g>
+  <b>240</b>
+ </bgcolor>
+</bsbPanel>
+<bsbPresets>
+</bsbPresets>
