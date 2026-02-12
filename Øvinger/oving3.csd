@@ -6,7 +6,7 @@
 
 <CsInstruments>
 ; #################### CONFIG #####################
-; Technical configuration
+; Technical_2 configuration
 sr      = 44100 ; sample rate
 kr      = 4410 ; control rate
 nchnls  = 2 ; number of channels
@@ -68,7 +68,7 @@ ikB37 = 0
 ikB38 = 0
 ikB39 = 0
 giTab_4     ftgen   4,      0,      4096,   10, ikB31,  ikB32,  ikB33,  ikB34,0,ikB35,0,ikB36,0,ikB37,0,ikB38,0,0,0,ikB39
-; Define B3 settings for next ftgen
+; Define B3 settings for next f_2tgen
 ikB31 = 6
 ikB32 = 6
 ikB33 = 8
@@ -139,7 +139,7 @@ instr 10
     outs    aoutL,  aoutR 
 
     ; Write to file in relative path 
-    fout    "./Lydfiler/Oving_3.wav",   8,  aoutL,  aoutR
+;   fout    "./Lydfiler/Oving_3.wav",   8,  aoutL,  aoutR
 
     ; Reset global send to avoid "feedback/overflow"
     gaSend  =   0

@@ -1,7 +1,7 @@
 <CsoundSynthesizer>
 
 <CsOptions>
--odac   ;-M0 -b128   -B256
+-odac   -M0 -b128   -B256
 </CsOptions>
 
 <CsInstruments>
@@ -74,15 +74,70 @@ instr 4
     iAmp    =   0.6
 
     ;name   opcode  num tim siz gen tones...
-    giPenta ftgen   0,  0,  0,  -2,  0,  2,  4,  7,  9, 12, -3, -5, -8, -10, -12
+    giPenta ftgen   0,  0,  0,  -2, -12, -10, -8, -5, -3, 0, 2, 4, 7, 9, 12
 
-    kIndex  rspline 0,  11,   0.1,  0.5
+    kIndex  rspline 0,  11,   0.2, 2 
     kTone   table   kIndex, giPenta  
 
    ;kRand   randomi iCps * 0.96,    iCps * 1.04,    4
 
-    aOsc    poscil  iAmp,   iRoot * semitone(kTone) ; semitones to scaling factor
+    aOsc    vco2    iAmp,   iRoot * semitone(kTone) ; semitones to scaling factor
+    
    ;aOsc    vco2    iAmp,   iRoot * semitone(kTone), 6
+
+    kFilCtr ctrl7   1,  2, 200,  10000          ; Control lowpass freq.
+
+    aOsc    butlp   aOsc,   kFilCtr
+
+    gaSend  =   aOsc
+    
+endin
+
+instr 5
+
+    iRoot   =   cpspch(8.05)
+    iAmp    =   0.6
+
+    ;name   opcode  num tim siz gen tones...
+    giPenta ftgen   0,  0,  0,  -2, -10, -7, -1, 2, 5, 11
+
+    kIndex  rspline 0,  11,   0.2, 2 
+    kTone   table   kIndex, giPenta  
+
+   ;kRand   randomi iCps * 0.96,    iCps * 1.04,    4
+
+    aOsc    vco2    iAmp,   iRoot * semitone(kTone) ; semitones to scaling factor
+    
+   ;aOsc    vco2    iAmp,   iRoot * semitone(kTone), 6
+
+    kFilCtr ctrl7   1,  2, 200,  10000          ; Control lowpass freq.
+
+    aOsc    butlp   aOsc,   kFilCtr
+
+    gaSend  =   aOsc
+    
+endin
+
+instr 6
+
+    iRoot   =   cpspch(8.05)
+    iAmp    =   0.6
+
+    ;name   opcode  num tim siz gen tones...
+    giPenta ftgen   0,  0,  0,  -2, -12, -10, -8, -7, -5, -3, -1, 0, 2, 4, 5, 7, 9, 11, 12
+
+    kIndex  rspline 0,  11,   0.2, 2 
+    kTone   table   kIndex, giPenta  
+
+   ;kRand   randomi iCps * 0.96,    iCps * 1.04,    4
+
+    aOsc    vco2    iAmp,   iRoot * semitone(kTone) ; semitones to scaling factor
+    
+   ;aOsc    vco2    iAmp,   iRoot * semitone(kTone), 6
+
+    kFilCtr ctrl7   1,  2, 200,  10000          ; Control lowpass freq.
+
+    aOsc    butlp   aOsc,   kFilCtr
 
     gaSend  =   aOsc
     
@@ -98,13 +153,14 @@ instr   10
 
     aRevL,  aRevR   reverbsc  gaSend, gaSend, 0.8,    8000  ; Apply reverb to received signal
 
-    kMix    =   0.4
+    kMix            ctrl7   1,  1, 0,  1                 ; Control reverb amt
+
     aL      =   (1 - kMix) * gaSend + kMix * aRevL          ; Mix reverb and dry signal
     aR      =   (1 - kMix) * gaSend + kMix * aRevR
 
     outs    aL, aR
 
-   ;fout    "./Lydfiler/temp.wav",   8,  aL,   aR           ; Enable and change name to record new file
+    fout    "./Lydfiler/drone.wav",   8,  aL,   aR           ; Enable and change name to record new file
 
     gaSend  =   0                                           ; Reset to handle feedback
 
@@ -117,8 +173,10 @@ endin
 <CsScore>
    ;i1  0   60          ; Wave sound
    ;i2  0   60          ; Howling wind
-   ;i3  0   60          ; Drone
-    i4  0   60          ; Melody Penta
+    i3  0   60          ; Drone
+   ;i4  0   60          ; Melody Penta
+   ;i5  0   60          ; Melody Tension
+   ;i6  0   60          ; Melody Scale
 
     i10 0   60          ; Reverb
 </CsScore>
