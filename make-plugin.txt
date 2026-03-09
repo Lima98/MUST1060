@@ -1,0 +1,3 @@
+Command for disabling safety features:
+sudo spctl --master-disable
+codesign -s - "plugin" --tiestamp --deep --force
