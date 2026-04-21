@@ -8,11 +8,11 @@
 ;
 ; 3b) Utvid
 ;
-; q.
+; q. Wet/dry miks er implementert som ønsket.
 ;
 ; r. Hører ikke mye forskjell, men føler det dukker opp litt artefakter på 32 som jeg ikke hører på 16.
 ;
-; s.
+; s. Når jeg bruker andre lydfiles som er mer tonale or harmoniske lage flangeren en "styggere" klagn, mens på tormmesample får den en sånn kul metallisk klang på et vis. Jeg tror det har noe med å gjøre at trommesamplet består av kortere lyder som ikke klinger lenge og den har ikke noe særlig tydelig tonalitet som gjør at lyden blir en effekt. Mens på med tonale lyder så blir lyden styggere fordi det legges oppå lyden igjen og "ødelegger" tonaliteten/klangen. Det kan absolutt fungere som en effekt, men jeg syntes det funket best med trommesamplet.
 <Cabbage>
 form caption("Flanger") size(400, 300), guiMode("queue") pluginId("Flng")
 rslider bounds(296, 162, 100, 100), channel("gain"), range(0, 1, 0.9, 1, .01), text("Gain"), trackerColour("lime"), outlineColour(0, 0, 0, 50), textColour("white")
@@ -20,6 +20,7 @@ rslider bounds(296, 162, 100, 100), channel("gain"), range(0, 1, 0.9, 1, .01), t
 rslider bounds(10, 10, 100, 100), channel("dybde"), range(0, 1, 0.9, 1, 0.001), text("LFOdybde") textColour("white")
 rslider bounds(200, 10, 100, 100), channel("frek"), range(0, 10, 0.2, 1, 0.001), text("LFOfrek") textColour("white")
 rslider bounds(300, 10, 100, 100), channel("feedb"), range(0, 1, 0.5, 1, 0.001), text("Feedb") textColour("white")
+rslider bounds(10, 180, 100, 100), channel("miks"), range(0, 1, 0.5, 1, 0.001), text("Miks") textColour("white")
 </Cabbage>
 <CsoundSynthesizer>
 <CsOptions>

@@ -56,7 +56,7 @@ endin
 </CsInstruments>
 
 <CsScore>
-
+i1 0 z
 </CsScore>
 
 </CsoundSynthesizer>
